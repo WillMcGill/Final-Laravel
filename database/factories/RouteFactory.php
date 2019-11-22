@@ -13,6 +13,6 @@ $factory->define(Routes::class, function (Faker $faker) {
         'difficulty' => $faker->randomElement(['5.8', '5.9', '5.10', '5.11', '5.12', '5.13']),
         'set_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'expire_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'active' => $faker->boolean(),
+        'active' => true
     ];
 });

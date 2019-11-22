@@ -45,4 +45,8 @@ class User extends Authenticatable
     {
         return Hash::check($password, $this->password);
     }
+
+    public function UsersRoutes(){
+        return$this->hasMany('App/UsersRoutes', 'user_id');
+    }
 }

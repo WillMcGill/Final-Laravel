@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Routes;
 use Illuminate\Http\Request;
+use App\Http\Resources\RouteCollection;
 
 class RoutesController extends Controller
 {
@@ -14,7 +15,9 @@ class RoutesController extends Controller
      */
     public function index()
     {
-        //
+        
+        return new RouteCollection(routes::all()->where('active', true));
+        
     }
 
     /**

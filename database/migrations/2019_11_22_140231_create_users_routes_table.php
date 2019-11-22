@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoutesTable extends Migration
+class CreateUsersRoutesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateRoutesTable extends Migration
      */
     public function up()
     {
-        Schema::create('routes', function (Blueprint $table) {
+        Schema::create('users_routes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('wall_location');
-            $table->string('type');
-            $table->string('difficulty');
-            $table->date('set_date');
-            $table->date('expire_date');
-            $table->boolean('active');
+            $table->bigInteger('user_id');
+            $table->bigInteger('route_id');
             $table->timestamps();
+            
         });
     }
 
@@ -32,6 +29,6 @@ class CreateRoutesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('routes');
+        Schema::dropIfExists('users_routes');
     }
 }

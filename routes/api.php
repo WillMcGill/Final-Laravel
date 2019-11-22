@@ -16,6 +16,8 @@ Route::post('/login', 'AuthenticationController@login')->name('login');
 
 Route::post('/register' , 'AuthenticationController@register')->name('register');
 
+Route::get('/active', 'RoutesController@index')->name('active');
+
 Route::middleware('auth:api')->group(function(){ 
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
     
