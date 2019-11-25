@@ -15,9 +15,13 @@ class CreateUsersRoutesTable extends Migration
     {
         Schema::create('users_routes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id');
-            $table->bigInteger('route_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('route_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('route_id')->references('id')->on('routes');
+
             
         });
     }

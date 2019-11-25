@@ -15,13 +15,15 @@ class CreateRoutesTable extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('wall_location');
+            $table->unsignedBigInteger('wall_location'); //coord_id
             $table->string('type');
             $table->string('difficulty');
             $table->date('set_date');
             $table->date('expire_date');
             $table->boolean('active');
             $table->timestamps();
+
+            $table->foreign('wall_location')->references('id')->on('coords');
         });
     }
 

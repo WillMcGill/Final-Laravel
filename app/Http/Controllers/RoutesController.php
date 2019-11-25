@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Routes;
+use App\Coords;
 use Illuminate\Http\Request;
 use App\Http\Resources\RouteCollection;
+
 
 class RoutesController extends Controller
 {
@@ -16,7 +18,7 @@ class RoutesController extends Controller
     public function index()
     {
         
-        return new RouteCollection(routes::all()->where('active', true));
+        return routes::all()->where('active', true);
         
     }
 
@@ -38,7 +40,8 @@ class RoutesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        
     }
 
     /**
@@ -49,7 +52,9 @@ class RoutesController extends Controller
      */
     public function show(Routes $routes)
     {
-        //
+        $data = coords::all();
+        
+        return $data;
     }
 
     /**

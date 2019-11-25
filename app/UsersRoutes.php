@@ -11,6 +11,6 @@ class UsersRoutes extends Model
         return$this->belongsTo('App/User', 'id');
     }
     public function Routes(){
-        return$this->belongsTo('App/Route', 'id');
+        return$this->belongsTo('App/Routes', 'id');
     }
 }
