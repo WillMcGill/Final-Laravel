@@ -84,21 +84,18 @@ class RoutesController extends Controller
                 $diffColor = "purple";
             }
             else {$diffColor = "other";}
-            // $routeData[0]->difficulty == "5.7" ? $diffColor = "red"
-            //                             : "5.8" ? $diffColor = "yellow"
-            //                             : "5.9" ? $diffColor = "green"
-            //                             : "5.10" ? $diffColor = "white"
-            //                             : "5.11" ? $diffColor = "blue"
-            //                             : "5.12" ? $diffColor - "black"
-            //                             : "5.13" ? $diffColor = "purple"
-            //                             : "5.14" ? $diffColor = "orange"
 
-            
-            
+            $editCoords = str_replace(str_split('[] '), '', $item->coords);
+            $arrCoords = explode(",", $editCoords);
+
+            for($i = 0; $i <= 2; $i++){
+                $arrCoords[$i] = intval($arrCoords[$i]);
+            }
+
             $point = [
                 "name"=>$item->id,
                 "shape"=>"circle",
-                "coords"=>$item->coords,
+                "coords"=>$arrCoords,
                 "preFillColor"=>$diffColor
             ];
 
