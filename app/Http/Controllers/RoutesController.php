@@ -7,6 +7,7 @@ use App\Coords;
 use Illuminate\Http\Request;
 use App\Http\Resources\RouteCollection;
 
+use function GuzzleHttp\json_encode;
 
 class RoutesController extends Controller
 {
@@ -18,7 +19,7 @@ class RoutesController extends Controller
     public function index()
     {
         
-        return routes::all()->where('active', true);
+        return routes::find(2);
         
     }
 
@@ -50,11 +51,62 @@ class RoutesController extends Controller
      * @param  \App\Routes  $routes
      * @return \Illuminate\Http\Response
      */
-    public function show(Routes $routes)
+    public function show(Routes $routes, Request $request)
     {
-        $data = coords::all();
+        $coordData = coords::all();
         
-        return $data;
+        $returnArray = [];
+        $point = null;
+
+        foreach ($coordData as $item){
+            $routeData = routes::where('wall_location', $item->id)->get();
+            $routeDiff = $routeData[0]->difficulty;
+
+            if($routeDiff == "5.7"){
+                $diffColor = "red";
+            }
+            else if($routeDiff == "5.8"){
+                $diffColor = "yellow";
+            }
+            else if($routeDiff == "5.9"){
+                $diffColor = "green";
+            }
+            else if($routeDiff == "5.10"){
+                $diffColor = "white";
+            }
+            else if($routeDiff == "5.11"){
+                $diffColor = "blue";
+            }
+            else if($routeDiff == "5.12"){
+                $diffColor = "black";
+            }
+            else if($routeDiff == "5.13"){
+                $diffColor = "purple";
+            }
+            else {$diffColor = "other";}
+            // $routeData[0]->difficulty == "5.7" ? $diffColor = "red"
+            //                             : "5.8" ? $diffColor = "yellow"
+            //                             : "5.9" ? $diffColor = "green"
+            //                             : "5.10" ? $diffColor = "white"
+            //                             : "5.11" ? $diffColor = "blue"
+            //                             : "5.12" ? $diffColor - "black"
+            //                             : "5.13" ? $diffColor = "purple"
+            //                             : "5.14" ? $diffColor = "orange"
+
+            
+            
+            $point = [
+                "name"=>$item->id,
+                "shape"=>"circle",
+                "coords"=>$item->coords,
+                "preFillColor"=>$diffColor
+            ];
+
+
+            array_push($returnArray, $point); 
+            
+        }
+        return $returnArray;
     }
 
     /**
