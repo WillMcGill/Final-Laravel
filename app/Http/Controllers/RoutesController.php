@@ -61,30 +61,18 @@ class RoutesController extends Controller
         foreach ($coordData as $item){
             $routeData = routes::where('wall_location', $item->id)->get();
             $routeDiff = $routeData[0]->difficulty;
-
-            if($routeDiff == "5.7"){
-                $diffColor = "red";
-            }
-            else if($routeDiff == "5.8"){
-                $diffColor = "yellow";
-            }
-            else if($routeDiff == "5.9"){
-                $diffColor = "green";
-            }
-            else if($routeDiff == "5.10"){
-                $diffColor = "white";
-            }
-            else if($routeDiff == "5.11"){
-                $diffColor = "blue";
-            }
-            else if($routeDiff == "5.12"){
-                $diffColor = "black";
-            }
-            else if($routeDiff == "5.13"){
-                $diffColor = "purple";
-            }
-            else {$diffColor = "other";}
-
+        
+           switch($routeDiff){
+               case "5.7": $diffColor = "red"; break;
+               case "5.8": $diffColor = "yellow"; break;
+               case "5.9": $diffColor = "green"; break;
+               case "5.10": $diffColor = "white"; break;
+               case "5.11": $diffColor = "blue"; break;
+               case "5.12": $diffColor = "black"; break;
+               case "5.13": $diffColor = "purple"; break;
+           }
+   
+                
             $editCoords = str_replace(str_split('[] '), '', $item->coords);
             $arrCoords = explode(",", $editCoords);
 

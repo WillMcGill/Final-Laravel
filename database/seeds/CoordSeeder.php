@@ -16,7 +16,7 @@ class CoordSeeder extends Seeder
      */
     public function run()
     {
-        $array = [
+        $hardCodedPointArray = [
             '[44, 494, 10]', 
             '[49, 447, 10]', 
             '[69, 405, 10]',
@@ -94,9 +94,10 @@ class CoordSeeder extends Seeder
             '[959, 503, 10]' 
         ];
 
-        foreach($array as $item) {
+        foreach($hardCodedPointArray as $item) {
             Coords::create([
-                'coords' => $item]);
+                'coords' => $item
+                ]);
         }
     }
 }
