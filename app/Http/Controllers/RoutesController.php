@@ -19,7 +19,7 @@ class RoutesController extends Controller
     public function index()
     {
         
-        return routes::find(2);
+        return routes::get();
         
     }
 
@@ -51,7 +51,7 @@ class RoutesController extends Controller
      * @param  \App\Routes  $routes
      * @return \Illuminate\Http\Response
      */
-    public function show(Routes $routes, Request $request)
+    public function show(Routes $routes)
     {
         $coordData = coords::all();
         
