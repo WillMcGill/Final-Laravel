@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(CoordSeeder::class);
         $this->call(RouteSeeder::class);
+        $this->call(UserRouteSeeder::class);
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UsersRoutes extends Model
+class UserRoutes extends Model
 {
     //
     public function Users(){
