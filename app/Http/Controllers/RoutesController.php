@@ -60,6 +60,8 @@ class RoutesController extends Controller
 
         foreach ($coordData as $item){
             $routeData = routes::where('wall_location', $item->id)->get();
+            
+            if($routeData){
             $routeDiff = $routeData[0]->difficulty;
         
            switch($routeDiff){
@@ -81,7 +83,7 @@ class RoutesController extends Controller
             }
 
             $point = [
-                "name"=>$item->id,
+                "name"=>strval($item->id),
                 "shape"=>"circle",
                 "coords"=>$arrCoords,
                 "preFillColor"=>$diffColor
@@ -89,7 +91,7 @@ class RoutesController extends Controller
 
 
             array_push($returnArray, $point); 
-            
+          } 
         }
         return $returnArray;
     }
