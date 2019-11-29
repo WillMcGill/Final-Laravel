@@ -7,6 +7,8 @@ use Faker\Generator as Faker;
 
 
 $factory->define(Routes::class, function (Faker $faker) {
+    static $number = 0;
+
     return [
         'wall_location' => $faker->unique()->numberBetween($min = 1, $max = 75),
         'type' => $faker->randomElement(['Top Rope', 'Lead', 'Auto-Belay']),
