@@ -13,4 +13,10 @@ class UserController extends Controller
     {
         return new UserCollection(User::all());
     }
+
+    public function currentUser()
+
+    {
+            return new UserCollection(User::where('id', request('id'))->get());
+    }
 }

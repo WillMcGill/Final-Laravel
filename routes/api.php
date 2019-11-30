@@ -20,6 +20,7 @@ Route::get('/active', 'RoutesController@index')->name('active');
 Route::get('/show' , 'RoutesController@show')->name('show');
 
 Route::get('/comments/{route_id}', 'UsersRoutesController@comments')->name('comments');
+Route::get('/currentuser/{id}' , 'UserController@currentUser')->name('currentUser');
 
 Route::middleware('auth:api')->group(function(){ 
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
