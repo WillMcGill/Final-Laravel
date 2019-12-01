@@ -18,8 +18,11 @@ class RoutesController extends Controller
      */
     public function index()
     {
+        $collection = new RouteCollection(routes::all());
+
+        $sorted = $collection->sortBy('wall_location');
         
-        return routes::get();
+        return $sorted->all();
         
     }
 
@@ -128,5 +131,21 @@ class RoutesController extends Controller
     public function destroy(Routes $routes)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Routes  $routes
+     * @return \Illuminate\Http\Response
+     */
+    public function showOne(Routes $routes)
+    {
+        $routeData = Routes::all()->where('wall_location' , request('id'));
+        
+        
+
+        
+        return $routeData;
     }
 }

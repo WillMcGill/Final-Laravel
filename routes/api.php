@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,9 +19,10 @@ Route::post('/register' , 'AuthenticationController@register')->name('register')
 
 Route::get('/active', 'RoutesController@index')->name('active');
 Route::get('/show' , 'RoutesController@show')->name('show');
+Route::get('/active/{id}', 'RoutesController@showOne')->name('showOne');
 
 Route::get('/comments/{route_id}', 'UsersRoutesController@comments')->name('comments');
-Route::get('/currentuser/{id}' , 'UserController@currentUser')->name('currentUser');
+Route::get('/currentuser' , 'UserController@currentUser')->name('currentUser');
 
 Route::middleware('auth:api')->group(function(){ 
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
