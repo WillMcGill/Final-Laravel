@@ -21,7 +21,15 @@ class UserSeeder extends Seeder
         'remember_token' => Str::random(10),
         'admin' => true
         ]);
-            
+        
+        App\User::create([
+            'name' => 'User',
+            'email' => 'user@user.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('user'), // password
+            'remember_token' => Str::random(10),
+            'admin' => false
+            ]);
         
     }
 }

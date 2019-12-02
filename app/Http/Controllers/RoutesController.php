@@ -122,7 +122,9 @@ class RoutesController extends Controller
         Routes::where('id', request('id'))->update(['difficulty' => request('diff')]);
         Routes::where('id', request('id'))->update(['type' => request('type')]);
 
-        return null;
+        
+
+        return response()->json('Success!! Maybe...');
     }
 
     /**
@@ -145,9 +147,6 @@ class RoutesController extends Controller
     public function showOne(Routes $routes)
     {
         $routeData = Routes::all()->where('wall_location' , request('id'));
-        
-        
-
         
         return $routeData;
     }

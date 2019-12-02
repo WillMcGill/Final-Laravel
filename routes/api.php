@@ -17,7 +17,7 @@ Route::post('/login', 'AuthenticationController@login')->name('login');
 
 Route::post('/register' , 'AuthenticationController@register')->name('register');
 
-Route::post('/update/{id}{type}{diff}', "RouteController@update")->name('update');
+Route::post('/update/{id}', "RoutesController@update")->name('update');
 
 Route::get('/active', 'RoutesController@index')->name('active');
 Route::get('/show' , 'RoutesController@show')->name('show');
