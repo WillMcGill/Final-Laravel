@@ -18,6 +18,7 @@ Route::post('/login', 'AuthenticationController@login')->name('login');
 Route::post('/register' , 'AuthenticationController@register')->name('register');
 
 Route::post('/update/{id}', "RoutesController@update")->name('update');
+Route::post('/rate', 'UsersRoutesController@addComments')->name('addComment');
 
 Route::get('/active', 'RoutesController@index')->name('active');
 Route::get('/show' , 'RoutesController@show')->name('show');

@@ -14,4 +14,7 @@ class UserRoutes extends Model
     public function Routes(){
         return$this->belongsTo('App/Routes', 'id');
     }
+
+    protected $fillable = ['user_id', 'route_id', 'rating', 'comments'];
+  
 }
