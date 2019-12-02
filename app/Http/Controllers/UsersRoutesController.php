@@ -21,4 +21,10 @@ public function addComments(Request $request, UserRoutes $userroutes){
        return response()->json('Success!! Maybe...');
 }
 
+public function deleteComments(Request $request, UserRoutes $userroutes){
+    UserRoutes::where('route_id', request('id'))->delete();
+
+       return response()->json('Success!! Maybe...');
+}
+
 }
