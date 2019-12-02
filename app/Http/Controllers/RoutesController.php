@@ -107,7 +107,7 @@ class RoutesController extends Controller
      */
     public function edit(Routes $routes)
     {
-        //
+        
     }
 
     /**
@@ -119,7 +119,10 @@ class RoutesController extends Controller
      */
     public function update(Request $request, Routes $routes)
     {
-        //
+        Routes::where('id', request('id'))->update(['difficulty' => request('diff')]);
+        Routes::where('id', request('id'))->update(['type' => request('type')]);
+
+        return null;
     }
 
     /**
