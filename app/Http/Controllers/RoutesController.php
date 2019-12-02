@@ -6,6 +6,7 @@ use App\Routes;
 use App\Coords;
 use Illuminate\Http\Request;
 use App\Http\Resources\RouteCollection;
+use Carbon\Carbon;
 
 use function GuzzleHttp\json_encode;
 
@@ -121,6 +122,8 @@ class RoutesController extends Controller
     {
         Routes::where('id', request('id'))->update(['difficulty' => request('diff')]);
         Routes::where('id', request('id'))->update(['type' => request('type')]);
+        Routes::where('id', request('id'))->update(['set_date' => Carbon::now()]);
+        Routes::where('id', request('id'))->update(['expire_date' => Carbon::now()->addDays(30)]);
 
         
 
